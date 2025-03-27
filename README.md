@@ -11,7 +11,8 @@ Currently the CICWE API will transmit information for the following regions:
 - United States of America:
 - - Partial Coverage 
 - Australia:
-- - All States 
+- - All States  
+
 [!NOTE]
 > Partial Coverage Only
 
