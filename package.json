@@ -1,15 +1,15 @@
 {
-  "name": "natsec_api",
-  "version": "1.0.0",
-  "main": "index.js",
+  "name": "cicwe",
+  "version": "0.0.1",
+  "main": "dist/main.js",
   "scripts": {
     "build": "npx tsc",
     "start": "NODE_PRODUCTION=true node --env-file-if-exists=.env dist/main.js",
     "debug": "NODE_PRODUCTION=false node --env-file-if-exists=.env dist/main.js"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Ashthetik",
+  "license": "UNLICENSED",
   "description": "",
   "devDependencies": {
     "@types/cors": "^2.8.17",
