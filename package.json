@@ -1,0 +1,26 @@
+{
+  "name": "natsec_api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx tsc",
+    "start": "NODE_PRODUCTION=true node --env-file-if-exists=.env dist/main.js",
+    "debug": "NODE_PRODUCTION=false node --env-file-if-exists=.env dist/main.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.1",
+    "@types/node": "^22.13.13",
+    "typescript": "^5.8.2"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "helmet": "^8.1.0"
+  }
+}
