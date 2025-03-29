@@ -17,7 +17,6 @@ router.get("/api/v1/ntas/usa", (req, res) => {
                 "Federal Beauru of Intelligence": "1-800-CALL-FBI (1-800-225-5324)",
                 "Central Intelligence Agency": "(703) 613-1287",
                 "Office of Public Affairs": "(703) 482-0623",
-                "National Security TTY Hotline": "1800 234 889",
                 "Emergency Services": "911"
             },
             reporting_link: "https://www.dhs.gov/see-something-say-something",
