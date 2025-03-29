@@ -1,6 +1,7 @@
 import { Router } from "express";
 import australia from "./australia"
 import europe from "./europe";
+import usa from "./usa";
 
 const router = Router();
 
@@ -13,5 +14,6 @@ router.get('/', (req, res) => {
 
 router.use(australia)
 router.use(europe);
+router.use(usa);
 
 export default router;
