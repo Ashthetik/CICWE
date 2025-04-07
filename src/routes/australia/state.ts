@@ -7,8 +7,6 @@ const router = Router();
 router.get("/api/v1/ntas/aus/vic", async (req, res) => {
     const source = await axios.get("https://www.police.vic.gov.au/api/tide/app-search/content-vicpol-vic-gov-au-production/elasticsearch/_search");
     const parsed = JSON.parse(JSON.stringify(source.data));
-    
-    console.log(parsed.hits.hits[0]["_source"].field_topic_name);
     const data = parsed.hits.hits;
 
     // DTO : [{
@@ -70,7 +68,7 @@ router.get("/api/v1/ntas/aus/tas", async (req, res) => {
             {
                 date: output[i].pubDate,
                 title: output[i].title,
-                type: "Unspecified",
+                type: "Unspecified", // TASPD don't specify this for some reason
                 description: output[i].description
             }
         ])
@@ -112,7 +110,7 @@ router.get("/api/v1/ntas/aus/qld", async (req, res) => {
             {
                 date: output[i].pubDate,
                 title: output[i].title,
-                type: "Unspecified",
+                type: "Unspecified", // QLDPD don't specify this for some reason
                 description: output[i].description
             }
         ])
@@ -152,7 +150,7 @@ router.get("/api/v1/ntas/aus/nt", async (req, res) => {
             {
                 date: output[i].pubDate,
                 title: output[i].title,
-                type: "Unspecified",
+                type: "Unspecified", // NTPD don't specify this for some reason
                 description: output[i].description
             }
         ])
