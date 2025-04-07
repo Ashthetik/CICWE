@@ -1,8 +1,10 @@
 import { Router } from "express";
 import * as cheerio from "cheerio";
+import state from "./state";
 
 const router = Router();
 
+router.use(state);
 router.get('/api/v1/ntas/australia', async (req, res) => {
     const source = (
         await cheerio.fromURL(
@@ -12,7 +14,25 @@ router.get('/api/v1/ntas/australia', async (req, res) => {
 
     const $ = cheerio.load(source)
     const threatLevel = JSON.parse($("#ThreatLevelJson").contents().text().trim())
-    
+    /** NOTE:
+     * DTO:
+    {
+        threat_level: string,
+        threat_no: string,
+        description: string,
+        contacts: {
+            email: string,
+            phone: {
+                string: string,
+                ...
+            },
+            reporting_link: string,
+            address: string
+        },
+        guidelines: [string],
+        news: [string]
+    }
+     */
     res.status(200).json({
         threat_level: threatLevel["ThreatLevelName"],
         threat_no: threatLevel["ThreatLevelNo"],

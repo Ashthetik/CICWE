@@ -1,13 +1,47 @@
 import { Router } from "express";
+import { XMLParser, XMLValidator } from "fast-xml-parser";
+import axios from "axios";
 
 const router = Router();
 
-router.get("/api/v1/ntas/usa", (req, res) => {
-    // TODO: Create a function to pull data from: https://www.dhs.gov/ntas-api-documentation
+router.get("/api/v1/ntas/usa", async (req, res) => {
+    const source = await axios.get("https://www.dhs.gov/ntas/1.1/feed.xml");
+    const validator = XMLValidator.validate(source.data);
+    let output;
+
+    if (validator !== true) {
+        res.status(502).json({
+            error: "Received an invalid response from a source server"
+        });
+    } else {
+        const Parser = new XMLParser();
+        output = Parser.parse(source.data);
+    }
+
+    /*
+    DTO:
+    {
+        level: string,
+        number: string,
+        alerts: string
+    }
+    */
+    const threatDetails: any = {};
+
+    if (output.alerts.length === 0) {
+        threatDetails.level = "No Current Threats",
+        threatDetails.number = "Not Assigned"
+        threatDetails.alerts = "There are no current advisories"
+    } else {
+        threatDetails.level = output.alerts.alert[0].type
+        threatDetails.number = "High",
+        threatDetails.alerts = output.alerts.summary
+    }
+
     res.status(200).json({
-        threat_level: "No Current Threats",
-        threat_no: "0",
-        description: "There are no current advisories.",
+        threat_level: threatDetails.level,
+        threat_no: threatDetails.number,
+        description: threatDetails.alerts,
         contacts: {
             emails: [
                 "SeeSay@hq.dhs.gov",
