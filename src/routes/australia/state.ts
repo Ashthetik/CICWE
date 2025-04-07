@@ -1,4 +1,5 @@
 import axios from "axios";
+import { XMLParser, XMLValidator } from "fast-xml-parser";
 import { Router } from "express";
 
 const router = Router();
@@ -42,15 +43,81 @@ router.get("/api/v1/ntas/aus/vic", async (req, res) => {
 });
 
 router.get("/api/v1/ntas/aus/tas", async (req, res) => {
-    res.status(200).json({})
+    const source = await axios.get("https://police.tas.gov.au/feed/");
+    const validator = XMLValidator.validate(source.data);
+    let output;
+
+    if (validator !== true) {
+        res.status(502).json({
+            error: "Received an invalid response from a source server"
+        });
+    } else {
+        const Parser = new XMLParser();
+        output = (Parser.parse(source.data)).rss.channel.item;
+    }
+
+    /*
+    DTO : [{
+        "date": string,
+        "title": string,
+        "type": string,
+        "description": string
+    }];
+    */
+    const data: any = []
+    for (let i = 0; i < output.length; i++) {
+        data.push([
+            {
+                date: output[i].pubDate,
+                title: output[i].title,
+                type: "Unspecified",
+                description: output[i].description
+            }
+        ])
+    }
+    res.status(200).json(data);
 });
 
 router.get("/api/v1/ntas/aus/syd", async (req, res) => {
+    const source = await axios.get("");
+
     res.status(200).json({})
 });
 
 router.get("/api/v1/ntas/aus/qld", async (req, res) => {
-    res.status(200).json({})
+    const source = await axios.get("https://mypolice.qld.gov.au/feed/");
+    const validator = XMLValidator.validate(source.data);
+    let output;
+
+    if (validator !== true) {
+        res.status(502).json({
+            error: "Received an invalid response from a source server"
+        })
+    } else {
+        const Parser = new XMLParser();
+        output = (Parser.parse(source.data)).rss.channel.item;
+    }
+
+    /*
+    DTO : [{
+        "date": string,
+        "title": string,
+        "type": string,
+        "description": string
+    }];
+    */
+    const data: any = [];
+    for (let i = 0; i < output.length; i++) {
+        data.push([
+            {
+                date: output[i].pubDate,
+                title: output[i].title,
+                type: "Unspecified",
+                description: output[i].description
+            }
+        ])
+    }
+    res.status(200).json(data);
 });
 
 router.get("/api/v1/ntas/aus/wa", async (req, res) => {
@@ -58,7 +125,39 @@ router.get("/api/v1/ntas/aus/wa", async (req, res) => {
 });
 
 router.get("/api/v1/ntas/aus/nt", async (req, res) => {
-    res.status(200).json({})
+    const source = await axios.get("https://pfes.nt.gov.au/news.rss");
+    const validator = XMLValidator.validate(source.data);
+    let output;
+
+    if (validator !== true) {
+        res.status(502).json({
+            error: "Received an invalid response from a source server"
+        })
+    } else {
+        const Parser = new XMLParser();
+        output = (Parser.parse(source.data)).rss.channel.item;
+    }
+
+    /*
+    DTO : [{
+        "date": string,
+        "title": string,
+        "type": string,
+        "description": string
+    }];
+    */
+    const data: any = [];
+    for (let i = 0; i < output.length; i++) {
+        data.push([
+            {
+                date: output[i].pubDate,
+                title: output[i].title,
+                type: "Unspecified",
+                description: output[i].description
+            }
+        ])
+    }
+    res.status(200).json(data);
 });
 
 export default router;
