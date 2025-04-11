@@ -5,17 +5,18 @@ While a user interface is currently not available, users are free to submit repo
 
 ## What's Available?
 Currently the CICWE API will transmit information for the following regions:
-- Europe:
-- - United Kingdom/England (UK/ENG)
-- - Ireland (North and Republic)
-- United States of America:
-- - Partial Coverage 
-- Australia:
-- - All States  
 
 > [!NOTE]
-> Partial Coverage Only
-
+> **Partial Coverage Only:**
+> - Europe:
+> - - United Kingdom/England (UK/ENG)
+> - - Ireland (North and Republic)
+> - United States of America:
+> - - Partial Coverage
+>  
+> **Full Coverage:**
+> - Australia:
+> - - All States 
 
 ## Official Sources:
 - https://www.mi5.gov.uk/
