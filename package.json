@@ -24,6 +24,7 @@
     "express": "^4.21.2",
     "fast-xml-parser": "^5.2.0",
     "helmet": "^8.1.0",
+    "node-fetch": "^3.3.2",
     "rss-parser": "^3.13.0"
   }
 }
