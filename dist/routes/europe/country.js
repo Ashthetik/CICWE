@@ -1,2 +1,0 @@
-"use strict";
-// TODO: Scrape Country Police Sites For Information
