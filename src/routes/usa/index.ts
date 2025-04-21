@@ -1,8 +1,9 @@
 import { Router } from "express";
 import { XMLParser, XMLValidator } from "fast-xml-parser";
 import axios from "axios";
+import { NTAS_TERROR_DTO } from "../../utility/dto";
 
-const router = Router();
+const router: Router = Router();
 
 router.get("/api/v1/ntas/usa", async (req, res) => {
     const source = await axios.get("https://www.dhs.gov/ntas/1.1/feed.xml");
@@ -18,27 +19,23 @@ router.get("/api/v1/ntas/usa", async (req, res) => {
         output = Parser.parse(source.data);
     }
 
-    /*
-    DTO:
-    {
-        level: string,
-        number: string,
-        alerts: string
-    }
-    */
-    const threatDetails: any = {};
+    const threatDetails: {
+        level?: string,
+        number?: string,
+        alerts?: string
+    } = {};
 
     if (output.alerts.length === 0) {
-        threatDetails.level = "No Current Threats",
-        threatDetails.number = "Not Assigned"
-        threatDetails.alerts = "There are no current advisories"
+        threatDetails.level = "No Current Threats";
+        threatDetails.number = "Not Assigned";
+        threatDetails.alerts = "There are no current advisories";
     } else {
-        threatDetails.level = output.alerts.alert[0].type
-        threatDetails.number = "High",
-        threatDetails.alerts = output.alerts.summary
+        threatDetails.level = output.alerts.alert[0].type;
+        threatDetails.number = "High";
+        threatDetails.alerts = output.alerts.summary;
     }
 
-    res.status(200).json({
+    const response: NTAS_TERROR_DTO = {
         threat_level: threatDetails.level,
         threat_no: threatDetails.number,
         description: threatDetails.alerts,
@@ -69,7 +66,9 @@ router.get("/api/v1/ntas/usa", async (req, res) => {
             "https://www.fbi.gov/news",
             "https://www.cia.gov/stories/"
         ]
-    });
+    };
+
+    res.status(200).json(response);
 })
 
 export default router;

@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
     });
 });
 
-router.use(australia)
+router.use(australia);
 router.use(europe);
 router.use(usa);
 
