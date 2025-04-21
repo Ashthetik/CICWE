@@ -26,6 +26,7 @@ Start reading our code and you'll get the hang of it. We optimize for readabilit
   * We avoid logic in views, putting HTML generators into helpers
   * We ALWAYS put spaces after list items and method parameters (`[1, 2, 3]`, not `[1,2,3]`), around operators (`x += 1`, not `x+=1`), and around hash arrows.
   * This is open source software. Consider the people who will read your code, and make it look nice for them. It's sort of like driving a car: Perhaps you love doing donuts when you're alone, but with passengers the goal is to make the ride as smooth as possible.
+  * When writing API responses, a DTO for it's correlating format can be found in [the Utility](src/utility/dto.ts) folder.
 
 Thanks,
 Ashlynn

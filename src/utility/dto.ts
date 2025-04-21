@@ -1,3 +1,7 @@
+/**
+ * Type Object for sending responses in the following API Path:
+ * /api/v1/ntas/:country/:state
+ */
 type NTAS_STATE_DTO = {
 	"date": string,
 	"title": string,
@@ -6,6 +10,10 @@ type NTAS_STATE_DTO = {
 	"notes"?: string[]
 };
 
+/**
+ * Type Object for sending responses in the following API Path:
+ * /api/v1/ntas/:country
+ */
 type NTAS_TERROR_DTO = {
 	"threat_level": string | undefined,
 	"threat_no"?: string,
