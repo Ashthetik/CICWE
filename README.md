@@ -1,7 +1,7 @@
 # Centralised Information Center for World Events
 
 This service will host and distribute a collection of nation terror threat alerts, reports, reporting guidelines, etc., as well as life threatening natural weather events in an easy to use and centralised form.  
-While a user interface is currently not available, users are free to submit reports, sources, and events not yet covered by official sources to cicwe@[domain here].
+While a user interface is currently not available, users are free to submit reports, sources, and events not yet covered by official sources via the [Issues tab](https://github.com/Ashthetik/CICWE).
 
 ## What's Available?
 Currently the CICWE API will transmit information for the following regions:

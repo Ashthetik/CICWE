@@ -71,17 +71,17 @@ router.get("/api/v1/ntas/aus/syd", async (req: Request, res: Response) => {
 
     for (let i = 0; i < list.length; i++) {
         if (list[i] === "\n") {
-            continue; // ignore it 
+            continue;
         }
 
         let temp = list[i].split(" - ");
 
         try {
             if (temp[0].includes("Skip to content")) {
-                continue; //ignore this
+                continue;
             }
             if (temp[1].split(", ")[0].includes("131 444")) {
-                continue; // Ignore this
+                continue; 
             }
             
             response.push({
@@ -160,6 +160,7 @@ router.get("/api/v1/ntas/aus/wa", async (req: Request, res: Response) => {
             date: new Date(data[i]["_source"].changed[0] * 1000).toISOString(),
             title: data[i]["_source"].title[0] as string,
             type: data[i]["_source"].field_service_intention[0] as string,
+            /// TODO: create a function that follows the source and grab the description
             description: `Details can be found at: https://wa.gov.au${data[i]["_source"].url[0]}`
         });
     }
