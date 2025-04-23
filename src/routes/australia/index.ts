@@ -1,4 +1,4 @@
-import { Router } from "express";
+import { Router, Request, Response } from "express";
 import * as cheerio from "cheerio";
 import state from "./state";
 import { NTAS_TERROR_DTO } from "../../utility/dto";
@@ -7,7 +7,7 @@ const router: Router = Router();
 
 router.use(state);
 
-router.get('/api/v1/ntas/australia', async (req, res) => {
+router.get('/api/v1/ntas/australia', async (req: Request, res: Response) => {
     const source = (
         await cheerio.fromURL(
             "https://www.nationalsecurity.gov.au/national-threat-level/current-national-terrorism-threat-level"

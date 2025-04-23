@@ -1,4 +1,4 @@
-import { Router } from "express";
+import { Router, Request, Response } from "express";
 import RSS from "rss-parser";
 import { NTAS_TERROR_DTO } from "../../utility/dto";
 
@@ -11,7 +11,7 @@ async function getDataFromMI5() {
     return feed;
 };
 
-router.get("/api/v1/ntas/uk", async (req, res) => {
+router.get("/api/v1/ntas/uk", async (req: Request, res: Response) => {
     const data = await getDataFromMI5();
 
     const threatLevel = data.items[0];
@@ -41,7 +41,7 @@ router.get("/api/v1/ntas/uk", async (req, res) => {
     res.status(200).json(response);
 });
 
-router.get("/api/v1/ntas/ireland", async (req, res) => {
+router.get("/api/v1/ntas/ireland", async (req: Request, res: Response) => {
     const data = await getDataFromMI5();
 
     const threatLevel = data.items[0];

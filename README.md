@@ -19,6 +19,24 @@ Currently the CICWE API will transmit information for the following regions:
 > - - All States 
 
 ## Official Sources:
-- https://www.mi5.gov.uk/
-- https://www.nationalsecurity.gov.au/
-- https://www.dhs.gov/
+
+<details>
+    <summary> Nation Security:</summary>
+    <ul>
+        <li> UK National Security: https://www.mi5.gov.uk/
+        <li> US National Security: https://www.nationalsecurity.gov.au/
+        <li> US National Security: https://www.dhs.gov/
+    </ul>
+</details>
+
+<details>
+    <summary> Australian Police:</summary>
+    <ul>
+        <li> Victoria: https://www.police.vic.gov.au/
+        <li> Tasmania: https://www.police.tas.gov.au/
+        <li> Sydney: https://www.police.nsw.gov.au/
+        <li> Queensland: https://www.mypolice.qld.gov.au/
+        <li> Western Australia: https://www.wa.gov.au/organisation/western-australia-police-force/
+        <li> Northern Territories: https://pfes.nt.gov.au/
+    </ul>
+</details>

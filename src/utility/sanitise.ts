@@ -124,50 +124,23 @@ const HTML_tags = [
 
 ];
 
-/// TODO: Make this function more sane,
-// Including the ability to check for similiar tags,
-// extended tags (i.e., <a href="" target="">), etc.
 /**
  * Basic HTML Sanitiser for handling majority of basic tags,
  * Won't protect against XSS reflecting from a source website yet
  * @param input String to be sanitised
  * @returns Santised String
  */
-function html_sanitise(input: string): string {
+export function html_sanitise(input: string): string {
+  let output: string = "";
 	for (let i = 0; i < HTML_tags.length; i++) {
-		let test = `<${HTML_tags[i]}>`;
+    // Get the tag, and everything inside of it
+		const test: string = input.slice(
+      input.indexOf(`<${HTML_tags[i]}`),
+      input.indexOf('>', input.indexOf(`<${HTML_tags}`))
+    ) + '>'; // Append > to the end since slice cuts it off
+    
+    output = input.replace(test, "");
+  }
 
-		if (input.includes(test)) {
-			input.replace(test, "");
-		}
-	}
-
-	return input;
-};
-
-/// TODO: Implement this
-/**
- * Hybrid Function for sanitising multiple variations of text, including but not limited to:
- * - HTML/XML
- * - Escape Sequences
- * @param input Text to be sanitised
- * @param settings Settings object to define what to (not) sanitise
- */
-function hybrid_sanitise(input: string, settings: {
-	enabled: {
-		html: boolean,
-		escape: boolean
-	},
-	// Custom Patterns 
-	patterns: {
-		html: string,
-		escape: string,
-	}
-}) {
-
-};
-
-module.exports = {
-	html: html_sanitise,
-	// hybrid: hybrid_sanitise
+  return output;
 };

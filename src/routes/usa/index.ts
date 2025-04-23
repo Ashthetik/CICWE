@@ -1,11 +1,11 @@
-import { Router } from "express";
+import { Router, Request, Response } from "express";
 import { XMLParser, XMLValidator } from "fast-xml-parser";
 import axios from "axios";
 import { NTAS_TERROR_DTO } from "../../utility/dto";
 
 const router: Router = Router();
 
-router.get("/api/v1/ntas/usa", async (req, res) => {
+router.get("/api/v1/ntas/usa", async (req: Request, res: Response) => {
     const source = await axios.get("https://www.dhs.gov/ntas/1.1/feed.xml");
     const validator = XMLValidator.validate(source.data);
     let output;
