@@ -7,7 +7,7 @@ import { NTAS_STATE_DTO } from "../../utility/dto";
 
 const router: Router = Router();
 
-router.get("/api/v1/ntas/aus/vic", async (req: Request, res: Response) => {
+router.get("/api/v1/police/aus/vic", async (req: Request, res: Response) => {
     const source = await axios.get("https://www.police.vic.gov.au/api/tide/app-search/content-vicpol-vic-gov-au-production/elasticsearch/_search");
     const parsed = JSON.parse(JSON.stringify(source.data));
     const data = parsed.hits.hits;
@@ -34,7 +34,7 @@ router.get("/api/v1/ntas/aus/vic", async (req: Request, res: Response) => {
     res.status(200).json(response);
 });
 
-router.get("/api/v1/ntas/aus/tas", async (req: Request, res: Response) => {
+router.get("/api/v1/police/aus/tas", async (req: Request, res: Response) => {
     const source = await axios.get("https://police.tas.gov.au/feed/");
     const validator = XMLValidator.validate(source.data);
     let output;
@@ -61,7 +61,7 @@ router.get("/api/v1/ntas/aus/tas", async (req: Request, res: Response) => {
     res.status(200).json(response);
 });
 
-router.get("/api/v1/ntas/aus/syd", async (req: Request, res: Response) => {
+router.get("/api/v1/police/aus/syd", async (req: Request, res: Response) => {
     const source = (
         await Cheerio.fromURL("https://www.police.nsw.gov.au/news")
     ).html();
@@ -99,7 +99,7 @@ router.get("/api/v1/ntas/aus/syd", async (req: Request, res: Response) => {
     res.status(200).json(response);
 });
 
-router.get("/api/v1/ntas/aus/qld", async (req: Request, res: Response) => {
+router.get("/api/v1/police/aus/qld", async (req: Request, res: Response) => {
     const source = await axios.get("https://mypolice.qld.gov.au/feed/");
     const validator = XMLValidator.validate(source.data);
     let output;
@@ -126,7 +126,7 @@ router.get("/api/v1/ntas/aus/qld", async (req: Request, res: Response) => {
     res.status(200).json(response);
 });
 
-router.get("/api/v1/ntas/aus/wa", async (req: Request, res: Response) => {
+router.get("/api/v1/police/aus/wa", async (req: Request, res: Response) => {
     const source = await fetch('https://wa-gov-au-syd-v8-prd.es.ap-southeast-2.aws.found.io/_msearch?ignore_unavailable=true', {
         method: 'POST',
         headers: {
@@ -168,7 +168,7 @@ router.get("/api/v1/ntas/aus/wa", async (req: Request, res: Response) => {
     res.status(200).json(response);
 });
 
-router.get("/api/v1/ntas/aus/nt", async (req: Request, res: Response) => {
+router.get("/api/v1/police/aus/nt", async (req: Request, res: Response) => {
     const source = await axios.get("https://pfes.nt.gov.au/news.rss");
     const validator = XMLValidator.validate(source.data);
     let output;
