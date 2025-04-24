@@ -58,5 +58,5 @@ if ((process.env.NODE_PRODUCTION as any as boolean) === true) {
 } else {
     app.listen(8080, () => {
         console.info(`[?] Server running on private port: 8080`);
-    })
+    });
 }

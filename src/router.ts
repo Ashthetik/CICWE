@@ -1,8 +1,8 @@
-import { Express, Router } from "express"
+import { Express } from "express"
 import mainRoutes from "./routes"
 
 const routes = (app: Express) => {
-    app.use('/', mainRoutes)
+    app.use('/', mainRoutes);
 };
 
 export default routes;

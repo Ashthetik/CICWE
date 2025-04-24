@@ -1,39 +1,22 @@
-import { Router } from "express";
+import { Router, Request, Response } from "express";
 import * as cheerio from "cheerio";
 import state from "./state";
+import { NTAS_TERROR_DTO } from "../../utility/dto";
 
-const router = Router();
+const router: Router = Router();
 
 router.use(state);
-router.get('/api/v1/ntas/australia', async (req, res) => {
+
+router.get('/api/v1/ntas/australia', async (req: Request, res: Response) => {
     const source = (
         await cheerio.fromURL(
             "https://www.nationalsecurity.gov.au/national-threat-level/current-national-terrorism-threat-level"
         )
     ).html();
 
-    const $ = cheerio.load(source)
-    const threatLevel = JSON.parse($("#ThreatLevelJson").contents().text().trim())
-    /** NOTE:
-     * DTO:
-    {
-        threat_level: string,
-        threat_no: string,
-        description: string,
-        contacts: {
-            email: string,
-            phone: {
-                string: string,
-                ...
-            },
-            reporting_link: string,
-            address: string
-        },
-        guidelines: [string],
-        news: [string]
-    }
-     */
-    res.status(200).json({
+    const $ = cheerio.load(source);
+    const threatLevel = JSON.parse($("#ThreatLevelJson").contents().text().trim());
+    const response: NTAS_TERROR_DTO = {
         threat_level: threatLevel["ThreatLevelName"],
         threat_no: threatLevel["ThreatLevelNo"],
         description: threatLevel["ThreatLevelDesc"],
@@ -56,8 +39,9 @@ router.get('/api/v1/ntas/australia', async (req, res) => {
             "https://www.nationalsecurity.gov.au/news-media/national-security-campaign",
             "https://www.nationalsecurity.gov.au/news-media/archive"
         ]
-    });
-});
+    };
 
+    res.status(200).json(response);
+});
 
 export default router;
