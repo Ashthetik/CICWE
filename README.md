@@ -23,20 +23,20 @@ Currently the CICWE API will transmit information for the following regions:
 <details>
     <summary> Nation Security:</summary>
     <ul>
-        <li> UK National Security: https://www.mi5.gov.uk/
-        <li> US National Security: https://www.nationalsecurity.gov.au/
-        <li> US National Security: https://www.dhs.gov/
+        <li> UK National Security: <a href="https://www.mi5.gov.uk/"target="_blank">mi5.gov.uk/</a>
+        <li> US National Security: <a href="https://www.nationalsecurity.gov.au/"target="_blank">nationalsecurity.gov.au/</a>
+        <li> US National Security: <a href="https://www.dhs.gov/"target="_blank">dhs.gov/</a>
     </ul>
 </details>
 
 <details>
     <summary> Australian Police:</summary>
     <ul>
-        <li> Victoria: https://www.police.vic.gov.au/
-        <li> Tasmania: https://www.police.tas.gov.au/
-        <li> Sydney: https://www.police.nsw.gov.au/
-        <li> Queensland: https://www.mypolice.qld.gov.au/
-        <li> Western Australia: https://www.wa.gov.au/organisation/western-australia-police-force/
-        <li> Northern Territories: https://pfes.nt.gov.au/
+        <li> Victoria: <a href="https://www.police.vic.gov.au/" target="_blank">police.vic.gov.au/</a>
+        <li> Tasmania: <a href="https://www.police.tas.gov.au/" target="_blank">police.tas.gov.au/</a>
+        <li> Sydney: <a href="https://www.police.nsw.gov.au/" target="_blank">police.nsw.gov.au/</a>
+        <li> Queensland: <a href="https://www.mypolice.qld.gov.au/" target="_blank">mypolice.qld.gov.au/</a>
+        <li> Western Australia: <a href="https://www.wa.gov.au/organisation/western-australia-police-force/" target="_blank">wa.gov.au/organisation/western-australia-police-force/</a>
+        <li> Northern Territories: <a href="https://pfes.nt.gov.au/" target="_blank">pfes.nt.gov.au/</a>
     </ul>
 </details>
