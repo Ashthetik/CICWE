@@ -22,7 +22,7 @@
     "cheerio": "^1.0.0",
     "cors": "^2.8.5",
     "express": "^5.1.0",
-    "fast-xml-parser": "^5.2.1",
+    "fast-xml-parser": "^5.2.2",
     "helmet": "^8.1.0",
     "node-fetch": "^3.3.2",
     "rss-parser": "^3.13.0"
